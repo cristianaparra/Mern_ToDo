@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 const NuevaCuenta = () => {
 
     const [usuario, guardarUsuario] = useState({
-        nombre:'',
+        nombre: '',
         email: '',
         password: '',
-        confirmar:''
+        confirmar: ''
     });
-    const {nombre, email, password, confirmar } = usuario;
+    const { nombre, email, password, confirmar } = usuario;
 
 
     const onChange = e => {
@@ -23,6 +23,10 @@ const NuevaCuenta = () => {
         e.preventDefault();
 
         // validar que no haya campos vacios
+
+        //pasword minimo 6 caracteres
+
+        //validar 2 paswword son iguales
 
         //pasarlo al caction
     }
