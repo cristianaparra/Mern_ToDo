@@ -32,6 +32,7 @@ const NuevoProyecto = () => {
         //reiniciar el form
     }
 
+    
     // mostrar el formulario
     const onClickFormulario = () =>{
         mostrarFormulario()
