@@ -7,10 +7,11 @@ const ListadoProyectos = props => {
     const proyectosContext = useContext(proyectoContext);
     const { proyectos, obtenerProyectos } = proyectosContext;
 
+// obtener proyectos cuando carga el componente
     useEffect(()=>{
         obtenerProyectos()
     },[])
-    
+
     //revisar si proyectos tiene contenido
     if (proyectos.length === 0) return null;
     
