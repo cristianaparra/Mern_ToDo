@@ -4,7 +4,7 @@ import proyectoContext from '../../context/proyectos/proyectoContext'
 const NuevoProyecto = () => {
 
     const proyectosContext = useContext(proyectoContext);
-    const { formulario } = proyectosContext
+    const { formulario, mostrarFormulario } = proyectosContext
     // state para proyecto
 
     const [proyecto, guardarProyecto] = useState({
@@ -31,12 +31,18 @@ const NuevoProyecto = () => {
         //agregar el state
         //reiniciar el form
     }
+
+    // mostrar el formulario
+    const onClickFormulario = () =>{
+        mostrarFormulario()
+    }
     return (
         <Fragment>
 
             <button
                 type='button'
                 className='btn btn-block btn-primario'
+                onClick={onClickFormulario}
             >
                 Nuevo Proyecto
         </button>
