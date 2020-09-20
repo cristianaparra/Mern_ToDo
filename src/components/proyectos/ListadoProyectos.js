@@ -13,7 +13,7 @@ const ListadoProyectos = props => {
     },[])
 
     //revisar si proyectos tiene contenido
-    if (proyectos.length === 0) return null;
+    if (proyectos.length === 0) return <p>Crea un nuevo proyectro para comenzar</p>;
     
 
     return (
