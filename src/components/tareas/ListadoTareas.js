@@ -1,13 +1,15 @@
 import React, { Fragment, useContext } from 'react';
 import Tarea from './Tarea'
 import proyectoContext from '../../context/proyectos/proyectoContext'
-const ListadoTareas = () => {
 
+const ListadoTareas = () => {
+    
+   
     const proyectosContext = useContext(proyectoContext);
     const { proyecto } = proyectosContext;
 
     //validacion de proyecto, si no hay proyecto sellecionado
-    if(!proyecto)return <h2>Selecciona un proyecto</h2>;
+    if (!proyecto) return <h2>Selecciona un proyecto</h2>;
     // array destructuring para extraer el proyecto actual
     const [proyectoActual] = proyecto;
 
