@@ -1,26 +1,64 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import proyectoContext from '../../context/proyectos/proyectoContext'
+import tareaContext from '../../context/tareas/tareaContext'
 
 const FormTarea = () => {
     //extraer un proyecto esta activo
     const proyectosContext = useContext(proyectoContext);
     const { proyecto } = proyectosContext;
 
-       //validacion de proyecto, si no hay proyecto sellecionado
-       if (!proyecto) return null;
-       // array destructuring para extraer el proyecto actual
-       const [proyectoActual] = proyecto;
+    // obtener la funcion del context de tarea
+    const tareasContext = useContext(tareaContext);
+    const { agregarTarea } = tareasContext;
 
+    //state del formulario
+    const [tarea, guardarTarea] = useState({
+        nombre: ''
+    })
+
+    // extraer el nombre del proyecto
+    const { nombre } = tarea;
+
+    //validacion de proyecto, si no hay proyecto sellecionado
+    if (!proyecto) return null;
+
+    // array destructuring para extraer el proyecto actual
+    const [proyectoActual] = proyecto;
+
+
+    //leer los valores del formulario
+    const handleChange = e => {
+        guardarTarea({
+            ...tarea,
+            [e.target.name]: e.target.value
+        })
+    }
+    const onSubmit = e => {
+        e.preventDefault()
+
+        // validar
+
+        //pasar la validaciomn
+
+        // agregar la nueva tarea al state de tarea
+        tarea.proyectoId = proyectoActual.id;
+        tarea.estado = false;
+        agregarTarea(tarea);
+        //reiniciar el form
+    }
     return (
 
         <div className='formulario'>
-            <form>
+            <form
+                onSubmit={onSubmit}>
                 <div className='contenedor-input'>
                     <input
                         type='text'
                         className='input-text'
                         placeholder='NombreTarea...'
                         name='nombre'
+                        value={nombre}
+                        onChange={handleChange}
                     />
                 </div>
                 <div className='contenedor-input'>
@@ -28,6 +66,7 @@ const FormTarea = () => {
                         type='submit'
                         className='btn btn-primario btn-submit btn-block'
                         value='Agregar Tarea'
+
                     />
                 </div>
             </form>
