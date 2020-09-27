@@ -11,7 +11,8 @@ import {
     VALIDAR_TAREA,
     ELIMINAR_TAREA,
     ESTADO_TAREA,
-    TAREA_ACTUAL
+    TAREA_ACTUAL,
+    ACTUALIZAR_TAREA
 } from '../../types/index'
 
 
@@ -31,7 +32,7 @@ const TareaState = props => {
         ],
         tareasproyecto: null,
         errortarea: false,
-        tareaseleccionada : null
+        tareaseleccionada: null
     }
 
     // create dispatch y state
@@ -69,7 +70,7 @@ const TareaState = props => {
         })
     }
     // cambiar el estado de cada tarea
-    const cambiarEstadoTarea= tarea =>{
+    const cambiarEstadoTarea = tarea => {
         dispatch({
             type: ESTADO_TAREA,
             payload: tarea
@@ -77,9 +78,16 @@ const TareaState = props => {
     }
 
     // cambiar el estado de la tarea actual
-    const guardarTareaActual= tarea =>{
+    const guardarTareaActual = tarea => {
         dispatch({
             type: TAREA_ACTUAL,
+            payload: tarea
+        })
+    }
+    //edita o modifica una tarea
+    const actualizarTarea = tarea => {
+        dispatch({
+            type: ACTUALIZAR_TAREA,
             payload: tarea
         })
     }
@@ -96,7 +104,8 @@ const TareaState = props => {
                 validarTarea,
                 eliminarTarea,
                 cambiarEstadoTarea,
-                guardarTareaActual
+                guardarTareaActual,
+                actualizarTarea
             }}>
             {props.children}
         </TareaContext.Provider>
