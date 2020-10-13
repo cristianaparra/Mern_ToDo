@@ -7,7 +7,7 @@ const NuevaCuenta = () => {
 
     //extarer valores del conext
     const alertaContext = useContext(AlertaContext)
-    const {alerta, mostrarAlerta} = alertaContext
+    const { alerta, mostrarAlerta } = alertaContext
 
     const [usuario, guardarUsuario] = useState({
         nombre: '',
@@ -29,13 +29,20 @@ const NuevaCuenta = () => {
         e.preventDefault();
 
         // validar que no haya campos vacios
-        if (nombre.trim() === '' || email.trim() === '' || password.trim() === '' || confirmar.trim() === '')
-        {
-            mostrarAlerta('todos los campos son obligatios', 'alerta-error')
+        if (nombre.trim() === '' || email.trim() === '' || password.trim() === '' || confirmar.trim() === '') {
+            mostrarAlerta('todos los campos son obligatios', 'alerta-error');
+            return;
         }
-
+        // password minimo de 6 caracteres
+        if (password.length < 6) {
+            mostrarAlerta('el password debe tener al menos 6 caracteres', 'alerta-error')
+            return;
+        }
         //validar 2 paswword son iguales
-
+        if (password !== confirmar) {
+            mostrarAlerta('los password tiene que ser iguales', 'alerta-error')
+            return;
+        }
         //pasarlo al caction
     }
 
