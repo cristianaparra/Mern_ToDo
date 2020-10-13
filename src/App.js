@@ -12,8 +12,8 @@ import AlertaState from './context/alertas/alertaState'
 function App() {
   return (
     <ProyectoState>
-      <AlertaState>
-        <TareaState>
+      <TareaState>
+        <AlertaState>
 
           <Router>
             <Switch>
@@ -23,8 +23,8 @@ function App() {
             </Switch>
           </Router>
 
-        </TareaState>
-      </AlertaState>
+        </AlertaState>
+      </TareaState>
     </ProyectoState>
   );
 }
