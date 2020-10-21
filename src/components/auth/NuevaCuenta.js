@@ -1,13 +1,18 @@
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import AlertaContext from '../../context/alertas/alertaContext';
+import AuthContext from '../../context/autentificacion/authContext'
 
 
 const NuevaCuenta = () => {
 
     //extarer valores del conext
     const alertaContext = useContext(AlertaContext)
-    const { alerta, mostrarAlerta } = alertaContext
+    const { alerta, mostrarAlerta } = alertaContext;
+
+// context de autentificiacion
+    const authContext = useContext(AuthContext)
+    const { registrarUsuario } = authContext;
 
     const [usuario, guardarUsuario] = useState({
         nombre: '',
@@ -44,6 +49,11 @@ const NuevaCuenta = () => {
             return;
         }
         //pasarlo al caction
+        registrarUsuario({
+            nombre,
+            email,
+            password
+        });
     }
 
     return (
